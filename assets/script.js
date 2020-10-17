@@ -1,7 +1,7 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+let specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 let passLength = false;
 let upperCase = false;
 let lowerCase = false;
@@ -12,8 +12,6 @@ function getPasswordLength() {
   passLength = prompt(
     "Your password length must be between 8 and 50 characters, please enter a numerical value"
   );
-  passLength = parseInt(passLength, 10);
-  // passLength = document.querySelector("#pLength").value;
 }
 
 function getCharacterTypes() {
@@ -39,15 +37,15 @@ function writePassword() {
   if (validPassLength()) {
     getCharacterTypes();
     if (validEntry()) {
-      let generatedPassword = generatePassword();
+      let password = genPass();
       let passwordText = document.querySelector("#password");
-      passwordText.value = generatedPassword;
-    } else  {
+      passwordText.value = password;
+    } else {
       alert("Cannot generate password, must select 1 type of character");
     }
-  } else if(passLength < 8 && passLength !== null) {
+  } else if (passLength < 8 && passLength !== null) {
     alert("password to short, does not meet minimum length requirement");
-  } else if(passLength > 50) {
+  } else if (passLength > 50) {
     alert("password to long, does not meet maximum length requirement");
   } else {
     alert("Cannot generate password, length not specified");
@@ -60,42 +58,34 @@ function validEntry() {
 
 function generatePassword() {
   let generatedPassword = "";
-  while (generatedPassword.length < passLength) {
-    generatePassword = generatePassword + genPass(generatePassword);
-    console.log(generatedPassword.length, passLength);
+  while (generatedPassword.length < passLength) 
+    generatedPassword = genPass(generatedPassword);
   }
 
   return generatedPassword;
 }
 
 function genPass(generatedPassword) {
-    let newPass = []
-  if (upperCase && generatedPassword.length < passLength) {
+  if (upperCase === true) {
     let idx = getRandomInt(25);
     let letter = alphabet.substr(idx, 1);
-    // generatedPassword += letter.toUpperCase();
-    newPass.push(letter.toUpperCase());
-    
+    password += letter.toUpperCase();
   }
-  if (lowerCase && generatedPassword.length < passLength) {
+  if (lowerCase === true) {
     let idx = getRandomInt(25);
     let letter = alphabet.substr(idx, 1);
-    // generatedPassword += letter.toLowerCase();
-    newPass.push(letter.toLowerCase());
+    password += letter.toLowerCase();
   }
-  if (specialChar && generatedPassword.length < passLength) {
+  if (specialChar === true) {
     let idx = getRandomInt(specialCharacters.length);
     let sChar = specialCharacters.substr(idx, 1);
-    // generatedPassword += sChar.toLowerCase();
-    newPass.push(sChar);
+    password += sChar.toLowerCase();
   }
-  if (passNum && generatedPassword.length < passLength) {
+  if (passNum === true) {
     let rNum = getRandomInt(9);
-    // generatedPassword += rNum;
-    newPass.push(rNum);
+    password += rNum;
   }
-console.log(newPass.join(''));
-  return newPass.join('');
+  return generatedPassword;
   // generatedpassword = newpass into string.
 }
 
