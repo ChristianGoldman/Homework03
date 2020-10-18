@@ -37,7 +37,7 @@ function writePassword() {
   if (validPassLength()) {
     getCharacterTypes();
     if (validEntry()) {
-      let password = genPass();
+      let password = generatePassword();
       let passwordText = document.querySelector("#password");
       passwordText.value = password;
     } else {
@@ -58,10 +58,10 @@ function validEntry() {
 
 function generatePassword() {
   let generatedPassword = "";
-  while (generatedPassword.length < passLength) 
+  while (generatedPassword.length < passLength) {
     generatedPassword = genPass(generatedPassword);
+    
   }
-
   return generatedPassword;
 }
 
@@ -86,9 +86,7 @@ function genPass(generatedPassword) {
     password += rNum;
   }
   return generatedPassword;
-  // generatedpassword = newpass into string.
 }
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
