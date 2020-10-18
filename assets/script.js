@@ -60,30 +60,29 @@ function generatePassword() {
   let generatedPassword = "";
   while (generatedPassword.length < passLength) {
     generatedPassword = genPass(generatedPassword);
-    
   }
   return generatedPassword;
 }
 
 function genPass(generatedPassword) {
-  if (upperCase === true) {
+  if (upperCase === true && generatedPassword.length < passLength) {
     let idx = getRandomInt(25);
     let letter = alphabet.substr(idx, 1);
-    password += letter.toUpperCase();
+    generatedPassword += letter.toUpperCase();
   }
-  if (lowerCase === true) {
+  if (lowerCase === true && generatedPassword.length < passLength) {
     let idx = getRandomInt(25);
     let letter = alphabet.substr(idx, 1);
-    password += letter.toLowerCase();
+    generatedPassword += letter.toLowerCase();
   }
-  if (specialChar === true) {
+  if (specialChar === true && generatedPassword.length < passLength) {
     let idx = getRandomInt(specialCharacters.length);
     let sChar = specialCharacters.substr(idx, 1);
-    password += sChar.toLowerCase();
+    generatedPassword += sChar.toLowerCase();
   }
-  if (passNum === true) {
+  if (passNum === true && generatedPassword.length < passLength) {
     let rNum = getRandomInt(9);
-    password += rNum;
+    generatedPassword += rNum;
   }
   return generatedPassword;
 }
