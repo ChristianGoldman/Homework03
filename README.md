@@ -21,6 +21,8 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random (getRandomInt)
 * https://bost.ocks.org/mike/shuffle/
 * https://validator.w3.org/nu/#l9c53
+* https://www.dyn-web.com/javascript/strings/split.php
+* https://www.tutorialspoint.com/what-is-fisher-yates-shuffle-in-javascript
 * BCA learning assistants
 * TA's paul hendrickson and Tommy Boone
 ## Link to deployed application ##

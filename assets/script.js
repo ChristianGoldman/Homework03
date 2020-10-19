@@ -37,7 +37,9 @@ function writePassword() {
   if (validPassLength()) {
     getCharacterTypes();
     if (validEntry()) {
+      alert("You've selected a length of " + passLength + ", with these included characters [ Upper case: " + upperCase + ", Lower case:" + lowerCase + ", Special character:" + specialChar + ", Numbers:" + passNum + " ]");
       let password = generatePassword();
+      password = shuffleCharacters(password);
       let passwordText = document.querySelector("#password");
       passwordText.value = password;
     } else {
@@ -52,6 +54,17 @@ function writePassword() {
   }
 }
 
+function shuffleCharacters(password) {
+  let arr = password.split("");
+  for (let i = password.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+
+  return arr.join("");
+}
 function validEntry() {
   return upperCase || lowerCase || specialChar || passNum;
 }
